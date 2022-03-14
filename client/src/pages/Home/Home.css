@@ -1,0 +1,233 @@
+.homepage {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+.homepage * {
+  font-family: Lucida, sans-serif;
+  box-sizing: border-box;
+}
+.homepage .logout {
+  position: absolute;
+  top: 2vh;
+  background-color: var(--primary-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  right: 2vh;
+  width: auto;
+  height: auto;
+  color: #fff;
+  cursor: pointer;
+  font-size: 2vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Lucida, sans-serif;
+}
+.homepage > h3 {
+  font-size:18px;
+  color: rgb(61, 61, 61);
+  margin-top: 2vmax;
+  font-weight: 300;
+  margin-left:5%;
+}
+.condidate-list {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3vmax;
+  padding: 5%;
+}
+.condidate-list-row-container {
+  position: relative;
+  width: 100%;
+}
+.condidate-list-header p {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(109, 108, 108);
+  text-align: left;
+}
+
+.condidate-list-header,
+.condidate-list-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  margin-bottom: 10px;
+  height: auto;
+  padding: 6px 4px;
+}
+.condidate-list-header > p,
+.condidate-list-row > p {
+  position: relative;
+  text-align: left;
+}
+.condidate-list-header>p:first-of-type,.condidate-list-row >p:first-of-type{
+  width: 5%;
+}
+.condidate-list-header p,
+.condidate-list-row p {
+  width: 20%;
+}
+.condidate-list-header > p:last-of-type,
+.condidate-list-row > p:last-of-type {
+  flex: 1;
+}
+.condidate-list-header > p:nth-last-of-type(2),
+.condidate-list-row > p:nth-last-of-type(2) {
+  flex: 1;
+}
+.condidate-list-row:nth-of-type(2n) {
+  background-color: rgb(220, 220, 250);
+}
+.condidate-icons {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.condidate-icons  .icons {
+  margin-right: 6px;
+  cursor: pointer;
+  font-size: 2vmax;
+  color: var(--primary-color);
+}
+
+.add-condidate-button{
+  width: 100%;
+  padding-left: 5%;
+  color: var(--primary-color);
+  font: 200 16px 'Lucida';
+}
+.add-condidate-button > span{
+  cursor: pointer;
+
+}
+
+
+.hidden{
+  visibility: hidden !important;
+  z-index: -1 !important;
+}
+
+
+/**************************************************************************************************/
+
+.add-condidate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+  display: grid;
+  place-items: center;
+  background-color: rgb(239, 239, 240);
+  z-index: 5;  
+}
+.add-condidate form{
+  width: 90%;
+  position: relative;
+  max-width: 800px;
+  padding: 20px 10px;
+  background-color: white;
+  box-shadow: 2px 2px 3px lightgray,-1px -1px 2px lightgray;
+}
+.add-condidate form h1{
+  font: 100 18px 'Lucida';
+  width: 100%;
+  padding-left: 5%;
+  margin-bottom: 40px;
+}
+.add-condidate form>div{
+  display: flex;
+  justify-content:space-around;
+  align-items:center ;
+  position: relative;
+  width: 100%;
+}
+.add-condidate form>div>div{
+  position: relative;
+  width: 40%;
+  height: auto;
+  margin-bottom: 20px;
+}
+.add-condidate >form >div p{
+  font:300 16px 'Lucida';
+  padding-left: 2px;
+}
+.add-condidate form  input,.add-condidate form  select{
+height: 45px;
+outline: none;
+width: 100%;
+position: relative;
+padding: 4px 10px;
+color: gray;
+font-weight: 300;
+border-radius: 5px;
+border: 1px solid lightgray;
+margin-top: 5px;
+}
+.add-condidate form .buttonContainer{
+  width: 100%;
+  justify-content: flex-end;
+  padding-right: 5%;
+}
+.add-condidate form .buttonContainer button{
+height: 50px;
+padding: 4px 10px;
+border: none;
+max-width: 140px;
+width:40%;
+margin-left: 30px;
+border-radius: 5px;
+font: 300 16px 'Lucida';
+}
+.add-condidate form .buttonContainer button:first-of-type{
+  border: 1.5px solid var(--primary-color);
+  background-color: white;
+}
+.add-condidate form .buttonContainer button:first-of-type:hover{
+  color: white;
+  background-color: var(--primary-color);
+}
+.add-condidate form .buttonContainer button:last-of-type{
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.add-condidate form .buttonContainer button:last-of-type:hover{
+  background-color: var(--hover-color);
+}
+
+@media (max-width: 600px) {
+  .logout {
+    font-size: 3vmax;
+  }
+  .add-condidate form > div {
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
+  .add-condidate > form > div > div{
+    width: 100%;
+  }
+  .add-condidate > form input,.add-condidate form select{
+    width: 90%;
+  }
+  .add-condidate > form   .buttonContainer{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .add-condidate > form > .buttonContainer > button{
+    margin-left: 0;
+  }
+  .condidate-list p ,.condidate-list span{
+    font-size: 14px;
+  }
+}
