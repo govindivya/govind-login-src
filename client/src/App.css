@@ -32,6 +32,11 @@ body{
   display: grid;
   place-items: center;
 }
+.loding >p{
+  text-align: center;
+  font: 500 22px 'Lucida';
+  color:rgb(75, 74, 74);
+}
 .spin {
   position: relative;
   width: 50px;
