@@ -35,7 +35,7 @@ const RegisterForm = ({
         />
         <p>Phone</p>
         <input
-          type="text"
+          type="number"
           placeholder="Enter Your Mobile Number"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}

@@ -29,7 +29,7 @@
   font-size:18px;
   color: rgb(61, 61, 61);
   margin-top: 2vmax;
-  font-weight: 300;
+  font-weight: 500;
   margin-left:5%;
 }
 .condidate-list {
@@ -103,7 +103,7 @@
   width: 100%;
   padding-left: 5%;
   color: var(--primary-color);
-  font: 200 16px 'Lucida';
+  font: 500 18px 'Lucida';
 }
 .add-condidate-button > span{
   cursor: pointer;

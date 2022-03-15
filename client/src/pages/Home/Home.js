@@ -314,7 +314,7 @@ const Home = () => {
                 type="text"
                 value={adress}
                 onChange={(e) => setAdress(e.target.value)}
-                placeholder="Enter  adress in min 20 chars"
+                placeholder="Enter  address in min 20 chars"
               />
             </div>
           </div>
