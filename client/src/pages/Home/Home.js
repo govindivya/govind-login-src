@@ -27,7 +27,7 @@ const Home = () => {
   const [age, setAge] = useState("");
   const [state, setState] = useState("");
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Shortlisted");
 
   //  ************************* Fetching list of condidates ******************************//
   useEffect(() => {
