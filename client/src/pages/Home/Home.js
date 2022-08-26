@@ -18,7 +18,7 @@ const Home = () => {
   const alert = useAlert();
   const [list, setList] = useState([]);
   const ref = useRef(null);
-
+  const [loading, setLoading] = useState(false);
   const [isEditPage, setIsEditPage] = useState(false);
   const [name, setName] = useState("");
   const [adress, setAdress] = useState("");
@@ -33,16 +33,19 @@ const Home = () => {
   useEffect(() => {
     async function fetchList() {
       try {
+        setLoading(true);
         const { data } = await axios.get("/api/condidates/get/all");
+        setLoading(false);
         if (data.success) {
           setList(data.condidates);
         }
       } catch (error) {
+        setLoading(false);
         alert.error(error.response.data.error);
       }
     }
     fetchList();
-  },[]);
+  }, []);
 
   //  ************************* Logout ******************************//
 
@@ -73,20 +76,11 @@ const Home = () => {
     setStatus(String(status).trim());
     setAge(String(age).trim());
     setPincode(String(pincode).trim());
-    console.log(
-      name.length < 3,
-      adress.length < 20,
-      state.length === 0,
-      age.length === 0,
-      pincode.length !== 6,
-      dob.length === 0
-    );
     console.log();
     if (
       name.length < 3 ||
-      adress.length < 20 ||
+      adress.length < 15 ||
       state.length === 0 ||
-      status.length === 0 ||
       age.length === 0 ||
       pincode.length !== 6 ||
       dob.length === 0
@@ -103,9 +97,14 @@ const Home = () => {
 
     const detailsValidated = validateDetails();
     const emailValidated = validateEmail();
-    if (!detailsValidated || !emailValidated) {
+    if (!detailsValidated) {
       alert.error("Some fields are not filled in proper manner");
-      ref.current.disabled=false;
+      ref.current.disabled = false;
+      return;
+    }
+    if (!emailValidated) {
+      alert.error("invalid gmail address");
+      ref.current.disabled = false;
       return;
     }
     const config = { headers: { "Content-Type": "application/json" } };
@@ -120,6 +119,7 @@ const Home = () => {
       pincode,
     };
     try {
+      setLoading(true);
       if (isEditPage) {
         const { data } = await axios.put(
           `/api/condidates/update`,
@@ -138,12 +138,14 @@ const Home = () => {
         if (data.success) {
           setList(data.condidates);
         }
+        setLoading(false);
       }
       setIsEditPage(false);
       hideCreateCondidate();
       clearAll();
       ref.current.disabled = false;
     } catch (error) {
+      setLoading(false);
       ref.current.disabled = false;
       alert.error(error.response.data.error);
     }
@@ -156,6 +158,7 @@ const Home = () => {
 
     try {
       const config = { headers: { "Content-Type": "application/json" } };
+      setLoading(true);
       const { data } = await axios.post(
         `/api/condidates/detail`,
         {
@@ -163,6 +166,7 @@ const Home = () => {
         },
         config
       );
+      setLoading(false);
       if (data.success) {
         const condidateDetails = data.condidate;
         setName(condidateDetails.name);
@@ -174,12 +178,13 @@ const Home = () => {
         setStatus(condidateDetails.status);
       }
     } catch (error) {
+      setLoading(false);
       console.log("The error is " + error);
       alert.error(error.response.data.error);
     }
   }
   /***************************************************************************************8 */
-  async function onDeleteClick(e,condidate) {
+  async function onDeleteClick(e, condidate) {
     try {
       e.preventDefault();
       const config = { headers: { "Content-Type": "application/json" } };
@@ -241,7 +246,7 @@ const Home = () => {
         </div>
 
         <div className="condidate-list-row-container">
-          {auth.loading ? (
+          {auth.loading || loading ? (
             <Smallspinner />
           ) : (
             list.map((item, index) => (

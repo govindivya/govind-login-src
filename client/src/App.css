@@ -1,7 +1,6 @@
-
-:root{
-  --primary-color:#4cbbfc;
-  --hover-color:#2eaef8;
+:root {
+  --primary-color: #4cbbfc;
+  --hover-color: #2eaef8;
 }
 *,
 ::after,
@@ -13,7 +12,7 @@
 a {
   text-decoration: none;
 }
-body{
+body {
   background-color: rgb(233, 232, 232);
 }
 .container {
@@ -32,10 +31,10 @@ body{
   display: grid;
   place-items: center;
 }
-.loding >p{
+.loding > p {
   text-align: center;
-  font: 500 22px 'Lucida';
-  color:rgb(75, 74, 74);
+  font: 500 22px "Lucida";
+  color: rgb(75, 74, 74);
 }
 .spin {
   position: relative;
@@ -46,22 +45,25 @@ body{
   border-bottom: none;
   animation: Animate 1s linear infinite;
 }
-.spinner{
-  width:100%;
-  height:50px;
-  position: relative;
+.spinner {
+  z-index: 1000;
+  opacity: 0.6;
+  width: 100%;
+  height: 100vh;
+  position:fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.spinner > div{
-  height: 100%;
+.spinner > div {
+  height: 50px;
   width: 50px;
   border: 3px solid var(--primary-color);
   border-bottom: none;
   border-radius: 50%;
   animation: Animate 1s linear infinite;
-  
 }
 @keyframes Animate {
   0% {
